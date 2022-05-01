@@ -130,4 +130,9 @@ public class RegionManager implements DualManager<ProtectedRegion, World> {
     public Location getHomeLocation(UUID uuid) {
         return homeLocation.get(uuid);
     }
+
+    public boolean isClaimed(Chunk chunk){
+        return claimedChunks.containsKey(getChunkId(chunk));
+    }
+
 }

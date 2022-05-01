@@ -28,6 +28,7 @@ public class CreativeClaim extends JavaPlugin {
     public void onEnable() {
         instance = this;
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        getDataFolder().mkdirs();
         File file = new File(getDataFolder(), "settings.json");
         try {
             if(file.createNewFile()){
@@ -52,7 +53,8 @@ public class CreativeClaim extends JavaPlugin {
         claimCommand.registerSubCommand("delete", new DeleteSubCommand());
         claimCommand.registerSubCommand("trust", new TrustSubCommand());
         claimCommand.registerSubCommand("untrust", new UntrustSubCommand());
-        claimCommand.registerSubCommand("my", new HomeSubCommand ());
+        claimCommand.registerSubCommand("my", new HomeSubCommand());
+        claimCommand.registerSubCommand("random", new RandomClaimSubCommand());
         getCommand("gs").setExecutor(claimCommand);
     }
 
