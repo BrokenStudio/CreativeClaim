@@ -6,6 +6,9 @@ import com.sk89q.worldguard.WorldGuard;
 import com.sk89q.worldguard.protection.regions.RegionContainer;
 import dev.brokenstudio.creative.claim.commands.CommandHandler;
 import dev.brokenstudio.creative.claim.commands.imp.ClaimSubCommand;
+import dev.brokenstudio.creative.claim.commands.imp.HomeSubCommand;
+import dev.brokenstudio.creative.claim.commands.imp.TrustSubCommand;
+import dev.brokenstudio.creative.claim.commands.imp.UntrustSubCommand;
 import dev.brokenstudio.creative.claim.config.Settings;
 import dev.brokenstudio.creative.claim.manager.RegionManager;
 import org.bukkit.Bukkit;
@@ -49,6 +52,9 @@ public class CreativeClaim extends JavaPlugin {
         regionManager = new RegionManager();
         CommandHandler claimCommand = new CommandHandler();
         claimCommand.registerSubCommand("claim", new ClaimSubCommand());
+        claimCommand.registerSubCommand("trust", new TrustSubCommand());
+        claimCommand.registerSubCommand("untrust", new UntrustSubCommand());
+        claimCommand.registerSubCommand("my", new HomeSubCommand ());
         getCommand("gs").setExecutor(claimCommand);
     }
 

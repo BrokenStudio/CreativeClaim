@@ -127,4 +127,7 @@ public class RegionManager implements DualManager<ProtectedRegion, World> {
         return chunk.getWorld() + ":" + chunk.getX() + ":" + chunk.getZ();
     }
 
+    public Location getHomeLocation(UUID uuid) {
+        return homeLocation.get(uuid);
+    }
 }

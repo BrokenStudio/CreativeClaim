@@ -16,7 +16,7 @@ public class UntrustSubCommand implements SubCommand {
             return;
         }
 
-        //TODO CHECK IF PLAYER IS ONLINE
+        //TODO UUID FETCHER
         CreativeClaim.getInstance().getRegionManager().untrustPlayer((Player) sender, Bukkit.getPlayer(args[0]).getUniqueId());
 
     }
