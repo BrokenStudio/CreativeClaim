@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.sk89q.worldguard.WorldGuard;
 import com.sk89q.worldguard.protection.regions.RegionContainer;
+import dev.brokenstudio.creative.claim.commands.CommandHandler;
 import dev.brokenstudio.creative.claim.config.Settings;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -42,6 +43,8 @@ public class CreativeClaim extends JavaPlugin {
             return;
         }
         regionContainer = WorldGuard.getInstance().getPlatform().getRegionContainer();
+        CommandHandler claimCommand = new CommandHandler();
+        getCommand("gs").setExecutor(claimCommand);
     }
 
     @Override

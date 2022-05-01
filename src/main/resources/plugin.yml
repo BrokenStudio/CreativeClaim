@@ -1,0 +1,13 @@
+name: CreativeClaim
+author: BrokenStudio
+version: 1.0-SNAPSHOT
+main: dev.brokenstudio.creative.claim.CreativeClaim
+website: https://brokenstudio.de
+api-version: 1.18
+depend:
+  - WorldGuard
+
+commands:
+  gs:
+    aliases:
+      - claim
