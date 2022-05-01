@@ -42,6 +42,10 @@ public class RegionManager implements DualManager<ProtectedRegion, World> {
     }
 
     public void claimChunk(Player player){
+        if(!CreativeClaim.getInstance().getSettings().getAllowedWorlds().contains(player.getWorld().getName())){
+            player.sendMessage(CreativeClaim.getPrefix() + "In dieser Welt darfst du keine Chunks in besitz nehmen.");
+            return;
+        }
         HashSet<String> claimedChunksSet = playerChunks.getOrDefault(player.getUniqueId(), new HashSet<>());
         if(claimedChunksSet.size() >= CreativeClaim.getInstance().getSettings().maxClaims()){
             player.sendMessage(CreativeClaim.getPrefix() + "Du besitzt schon die maximale anzahl an Chunks.");

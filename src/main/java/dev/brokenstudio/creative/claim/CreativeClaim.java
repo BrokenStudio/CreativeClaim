@@ -5,7 +5,9 @@ import com.google.gson.GsonBuilder;
 import com.sk89q.worldguard.WorldGuard;
 import com.sk89q.worldguard.protection.regions.RegionContainer;
 import dev.brokenstudio.creative.claim.commands.CommandHandler;
+import dev.brokenstudio.creative.claim.commands.imp.ClaimSubCommand;
 import dev.brokenstudio.creative.claim.config.Settings;
+import dev.brokenstudio.creative.claim.manager.RegionManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -20,6 +22,7 @@ public class CreativeClaim extends JavaPlugin {
     private static CreativeClaim instance;
     private Settings settings;
     private RegionContainer regionContainer;
+    private RegionManager regionManager;
 
     @Override
     public void onEnable() {
@@ -43,7 +46,9 @@ public class CreativeClaim extends JavaPlugin {
             return;
         }
         regionContainer = WorldGuard.getInstance().getPlatform().getRegionContainer();
+        regionManager = new RegionManager();
         CommandHandler claimCommand = new CommandHandler();
+        claimCommand.registerSubCommand("claim", new ClaimSubCommand());
         getCommand("gs").setExecutor(claimCommand);
     }
 
@@ -62,6 +67,10 @@ public class CreativeClaim extends JavaPlugin {
 
     public RegionContainer getRegionContainer() {
         return regionContainer;
+    }
+
+    public RegionManager getRegionManager() {
+        return regionManager;
     }
 
     public static String getPrefix() {
